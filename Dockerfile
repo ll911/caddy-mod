@@ -18,9 +18,9 @@ LABEL name="Caddy" \
 
 ENV XDG_CONFIG_HOME /config
 ENV XDG_DATA_HOME /data
-ENTRYPOINT ["caddy"]
+
 VOLUME /config
 VOLUME /data
 EXPOSE 8080 8443 8001 8444
 STOPSIGNAL SIGTERM
-CMD ["caddy", "run"]
+CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]
