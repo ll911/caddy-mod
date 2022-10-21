@@ -1,7 +1,7 @@
-FROM docker.io/caddy:2.5.2-builder-alpine as builder
+FROM docker.io/caddy:2.6.2-builder-alpine as builder
 RUN xcaddy build --with github.com/caddyserver/transform-encoder
 
-FROM quay.io/llrealm/baseutil
+FROM quay.io/llrealm/baseutil:prod
 MAINTAINER leo.lou@gov.bc.ca
 
 COPY --from=builder /usr/bin/caddy /usr/bin/    
