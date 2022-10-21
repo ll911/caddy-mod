@@ -8,7 +8,7 @@ COPY --from=builder /usr/bin/caddy /usr/bin/
 
 LABEL name="Caddy" \
       vendor="Caddy" \
-      version="v2.5.2" \
+      version="v2.6.2" \
       release="CE" \
       url="https://caddyserver.com/" \
       io.openshift.tags="golang" \
