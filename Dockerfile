@@ -4,7 +4,8 @@ RUN xcaddy build --with github.com/caddyserver/transform-encoder
 FROM quay.io/llrealm/baseutil:main
 MAINTAINER leo.lou@gov.bc.ca
 
-COPY --from=builder /usr/bin/caddy /usr/bin/    
+COPY --from=builder /usr/bin/caddy /usr/bin/
+COPY entrypoint.sh /entrypoint.sh
 
 LABEL name="Caddy" \
       vendor="Caddy" \
@@ -18,7 +19,6 @@ LABEL name="Caddy" \
 
 RUN adduser -S caddy \
   && chown -R caddy:0 /opt && chmod -R 770 /opt \
-  && curl https://raw.githubusercontent.com/ll911/caddy-mod/main/entrypoint.sh -o /entrypoint.sh \
   && chmod 664 /etc/passwd && chmod 755 /entrypoint.sh \
   rm -rf /tmp/*
 
