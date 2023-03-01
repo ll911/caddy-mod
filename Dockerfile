@@ -4,6 +4,8 @@ RUN xcaddy build --with github.com/caddyserver/transform-encoder
 FROM quay.io/llrealm/baseutil:main
 MAINTAINER leo.lou@gov.bc.ca
 
+USER 0
+
 COPY --from=builder /usr/bin/caddy /usr/bin/
 COPY entrypoint.sh /entrypoint.sh
 
@@ -22,6 +24,7 @@ RUN adduser -S caddy \
   && chmod 664 /etc/passwd && chmod 755 /entrypoint.sh \
   rm -rf /tmp/*
 
+USER caddy
 ENV XDG_CONFIG_HOME /config
 ENV XDG_DATA_HOME /data
 
