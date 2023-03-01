@@ -19,9 +19,9 @@ LABEL name="Caddy" \
       io.k8s.display-name="Caddy with transform encoder" \
       io.k8s.description="Caddy with transform encoder"          
 
-RUN usermod -u 1000 caddy \
-  && chmod 664 /etc/passwd && chmod 755 /entrypoint.sh \
-  && rm -rf /tmp/*
+RUN deluser app && adduser -S caddy \
+  && chown -R caddy:0 /opt/app && chmod -R 775 /opt/app/ \
+  && chmod 664 /etc/passwd && chmod 755 /entrypoint.sh
 
 USER caddy
 ENV XDG_CONFIG_HOME /config
