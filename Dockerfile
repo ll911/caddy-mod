@@ -20,11 +20,12 @@ LABEL name="Caddy" \
       io.k8s.description="Caddy with transform encoder"          
 
 RUN deluser app && adduser -S caddy \
-  && chown -R caddy:0 /opt/app && chmod -R 775 /opt/app/ \
+  && chown -R caddy:0 /home/caddy && chmod -R 775 /home/caddy/ \
   && chown -R caddy:0 /usr/bin/caddy \
   && chmod 664 /etc/passwd && chmod 755 /entrypoint.sh
 
 USER caddy
+WORKDIR /home/caddy/
 ENV XDG_CONFIG_HOME /config
 ENV XDG_DATA_HOME /data
 
