@@ -1,7 +1,7 @@
 FROM docker.io/caddy:2.6.4-builder-alpine as builder
 RUN xcaddy build --with github.com/caddyserver/transform-encoder
 
-FROM quay.io/llrealm/baseutil:main
+FROM quay.io/llrealm/baseutil:prod
 MAINTAINER leo.lou@gov.bc.ca
 
 USER 0
@@ -21,6 +21,7 @@ LABEL name="Caddy" \
 
 RUN deluser app && adduser -S caddy \
   && chown -R caddy:0 /opt/app && chmod -R 775 /opt/app/ \
+  && chown -R caddy:0 /usr/bin/caddy \
   && chmod 664 /etc/passwd && chmod 755 /entrypoint.sh
 
 USER caddy
