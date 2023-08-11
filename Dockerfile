@@ -1,4 +1,4 @@
-FROM docker.io/caddy:2.6.2-builder-alpine as builder
+FROM docker.io/caddy:2.7.3-builder-alpine as builder
 RUN xcaddy build \
     --with github.com/caddyserver/transform-encoder \
     --with github.com/caddyserver/forwardproxy@caddy2=github.com/klzgrad/forwardproxy@naive
@@ -15,8 +15,8 @@ LABEL name="Caddy" \
       url="https://caddyserver.com/" \
       io.openshift.tags="golang" \
       io.openshift.expose-services="8080:8443:8001:8444" \
-      io.k8s.display-name="Caddy with transform encoder" \
-      io.k8s.description="Caddy with transform encoder"          
+      io.k8s.display-name="Caddy with transform encoder and forward-proxy" \
+      io.k8s.description="Caddy with transform encoder and forward-proxy"          
 
 ENV XDG_CONFIG_HOME /config
 ENV XDG_DATA_HOME /data
