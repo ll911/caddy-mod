@@ -6,6 +6,8 @@ RUN xcaddy build \
 FROM quay.io/llrealm/baseutil:prod
 MAINTAINER leo.lou@gov.bc.ca
 
+USER 0
+
 COPY --from=builder /usr/bin/caddy /usr/bin/
 COPY entrypoint.sh /entrypoint.sh
 
