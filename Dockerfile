@@ -1,4 +1,4 @@
-FROM docker.io/caddy:2.7.3-builder-alpine as builder
+FROM docker.io/caddy:2.7.4-builder-alpine as builder
 RUN xcaddy build \
     --with github.com/caddyserver/transform-encoder \
     --with github.com/caddyserver/forwardproxy@caddy2=github.com/klzgrad/forwardproxy@naive
@@ -10,7 +10,7 @@ COPY --from=builder /usr/bin/caddy /usr/bin/
 
 LABEL name="Caddy" \
       vendor="Caddy" \
-      version="v2.6.2" \
+      version="v2.7.4" \
       release="CE" \
       url="https://caddyserver.com/" \
       io.openshift.tags="golang" \
