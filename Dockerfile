@@ -6,7 +6,8 @@ RUN xcaddy build \
 FROM quay.io/llrealm/baseutil:prod
 MAINTAINER leo.lou@gov.bc.ca
 
-COPY --from=builder /usr/bin/caddy /usr/bin/    
+COPY --from=builder /usr/bin/caddy /usr/bin/
+COPY entrypoint.sh /entrypoint.sh
 
 LABEL name="Caddy" \
       vendor="Caddy" \
@@ -19,6 +20,13 @@ LABEL name="Caddy" \
       io.k8s.description="Caddy with transform encoder and forward-proxy" \
       org.opencontainers.image.description="Caddy with transform encoder and forward-proxy"
 
+RUN deluser app && adduser -S caddy \
+  && chown -R caddy:0 /home/caddy && chmod -R 775 /home/caddy/ \
+  && chown -R caddy:0 /usr/bin/caddy \
+  && chmod 664 /etc/passwd && chmod 755 /entrypoint.sh
+
+USER caddy
+WORKDIR /home/caddy/
 ENV XDG_CONFIG_HOME /config
 ENV XDG_DATA_HOME /data
 
