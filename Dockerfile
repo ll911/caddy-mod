@@ -16,7 +16,8 @@ LABEL name="Caddy" \
       io.openshift.tags="golang" \
       io.openshift.expose-services="8080:8443:8001:8444" \
       io.k8s.display-name="Caddy with transform encoder and forward-proxy" \
-      io.k8s.description="Caddy with transform encoder and forward-proxy"          
+      io.k8s.description="Caddy with transform encoder and forward-proxy" \
+      org.opencontainers.image.description DESCRIPTION="Caddy with transform encoder and forward-proxy"
 
 ENV XDG_CONFIG_HOME /config
 ENV XDG_DATA_HOME /data
