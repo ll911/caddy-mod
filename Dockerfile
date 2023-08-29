@@ -36,4 +36,5 @@ VOLUME /config
 VOLUME /data
 EXPOSE 8080 8443 8001 8444
 STOPSIGNAL SIGTERM
+ENTRYPOINT ["/entrypoint.sh"]
 CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]
