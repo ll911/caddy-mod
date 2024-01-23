@@ -1,4 +1,4 @@
-FROM docker.io/caddy:2.7.4-builder-alpine as builder
+FROM docker.io/caddy:2.7.6-builder-alpine as builder
 RUN xcaddy build --with github.com/caddyserver/transform-encoder
 
 FROM quay.io/llrealm/baseutil:prod
@@ -11,7 +11,7 @@ COPY entrypoint.sh /entrypoint.sh
 
 LABEL name="Caddy" \
       vendor="Caddy" \
-      version="v2.7.4" \
+      version="v2.7.6" \
       release="CE" \
       url="https://caddyserver.com/" \
       io.openshift.tags="golang" \
