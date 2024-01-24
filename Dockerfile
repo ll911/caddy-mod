@@ -1,4 +1,4 @@
-FROM docker.io/caddy:2.7.4-builder-alpine as builder
+FROM docker.io/caddy:2.7.6-builder-alpine as builder
 RUN xcaddy build \
     --with github.com/caddyserver/transform-encoder \
     --with github.com/caddyserver/forwardproxy@caddy2=github.com/klzgrad/forwardproxy@naive
