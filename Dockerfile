@@ -1,7 +1,7 @@
-FROM docker.io/caddy:2.7.6-builder-alpine as builder
+FROM docker.io/caddy:2.9.1-builder-alpine as builder
 RUN xcaddy build --with github.com/caddyserver/transform-encoder \
-  --with github.com/greenpau/caddy-security@v1.1.23 \
-  --with github.com/caddyserver/cache-handler@v0.11.0
+  --with github.com/greenpau/caddy-security@v1.1.31 \
+  --with github.com/caddyserver/cache-handler@v0.15.0
 
 FROM quay.io/llrealm/baseutil:prod
 MAINTAINER leo.lou@gov.bc.ca
