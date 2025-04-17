@@ -1,7 +1,8 @@
 FROM docker.io/caddy:2.9.1-builder-alpine as builder
 RUN xcaddy build \
     --with github.com/caddyserver/transform-encoder \
-    --with github.com/caddyserver/forwardproxy@caddy2=github.com/klzgrad/forwardproxy@naive
+    --with github.com/caddyserver/cache-handler \
+    --with github.com/caddyserver/forwardproxy@caddy2=github.com/klzgrad/forwardproxy@master
 
 FROM quay.io/llrealm/baseutil:prod
 MAINTAINER leo.lou@gov.bc.ca
