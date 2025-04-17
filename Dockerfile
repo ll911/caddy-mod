@@ -14,7 +14,7 @@ COPY entrypoint.sh /entrypoint.sh
 
 LABEL name="Caddy" \
       vendor="Caddy" \
-      version="v2.7.6" \
+      version="v2.9.1" \
       release="CE" \
       url="https://caddyserver.com/" \
       io.openshift.tags="golang" \
