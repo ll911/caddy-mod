@@ -1,6 +1,6 @@
-FROM docker.io/caddy:2.9.1-builder-alpine as builder
+FROM docker.io/caddy:2.10.2-builder-alpine as builder
 RUN xcaddy build --with github.com/caddyserver/transform-encoder \
-  --with github.com/caddyserver/cache-handler@v0.15.0
+  --with github.com/caddyserver/cache-handler@v0.16.0
 
 ##  --with github.com/greenpau/caddy-security@v1.1.31 \
 
@@ -14,7 +14,7 @@ COPY entrypoint.sh /entrypoint.sh
 
 LABEL name="Caddy" \
       vendor="Caddy" \
-      version="v2.9.1" \
+      version="v2.10.2" \
       release="CE" \
       url="https://caddyserver.com/" \
       io.openshift.tags="golang" \
@@ -22,7 +22,7 @@ LABEL name="Caddy" \
       io.k8s.display-name="Caddy with transform encoder" \
       io.k8s.description="Caddy with transform encoder"          
 
-RUN deluser app && adduser -S caddy \
+RUN apk update && apk upgrade && deluser app && adduser -S caddy \
   && chown -R caddy:0 /home/caddy && chmod -R 775 /home/caddy/ \
   && chown -R caddy:0 /usr/bin/caddy \
   && chmod 664 /etc/passwd && chmod 755 /entrypoint.sh
